@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form {
+  background-color: purple;
+  color: red;
+}
+
+.element::before {
+  content: attr(data-currency);
+}
+
+/*# sourceMappingURL=main.css.map */

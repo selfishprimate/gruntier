@@ -1,0 +1,12 @@
+@import "gorillass";
+
+@include gorillass-antialias;
+
+.form {
+  background-color: purple;
+  color: red;
+}
+
+.element {
+  @include gorillass-before("data-currency");
+}

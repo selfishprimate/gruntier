@@ -1,20 +1,40 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   // Configuration
-
   grunt.initConfig({
-    //pass in options to plugins
+    sass: {
+      // Task
+      dist: {
+        // Target
+        options: {
+          style: "expanded",
+          loadPath: ['node_modules/gorillass/core']
+        },
+        files: {
+          // Dictionary of files
+          "assets/css/main.css": "assets/sass/main.scss", // 'destination': 'source'
+        },
+      },
+    },
+    concat: {
+      js: {
+        src: ["assets/js/*.js"],
+        dest: "build/script.js",
+      },
+      css: {
+        src: ["assets/css/*.css"],
+        dest: "build/main.css",
+      },
+    },
   });
 
   // Load plugins
-  //grunt.loadNpmTasks('')
+  grunt.loadNpmTasks("grunt-contrib-sass");
+  grunt.loadNpmTasks("grunt-contrib-concat");
 
-  //Register Tasks
-  grunt.registerTask('run', function() {
-    console.log("I'm running Grunt!");
-  });
+  //Registering Tasks
 
-  grunt.registerTask('sleep', function () {
-    console.log("I'm sleeping!");
-  });
+  grunt.registerTask("concat-js", ["concat:js"]);
+  grunt.registerTask("concat-css", ["concat:css"]);
+  grunt.registerTask('default', ["sass"]);
 
-}
+};
